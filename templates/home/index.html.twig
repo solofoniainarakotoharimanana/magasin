@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-	<h1 class="text-success">Hello</h1>
+{% block content %}
+	{% include "layouts/_card.html.twig" with {products: products} only %}
 {% endblock %}

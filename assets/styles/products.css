@@ -1,0 +1,22 @@
+.mg-products-content {
+  padding-top: 250px;
+}
+
+.mg-products-content-title {
+  color: #782ae2;
+  text-shadow: 1px 1px;
+  margin-top: 92px;
+  margin-bottom: 51px;
+}
+
+.mg-btn-add-cart {
+  background-color: #650ed5 !important;
+  border: 1px solid #650ed5 !important;
+  color: #ffffff;
+}
+
+.mg-btn-add-cart:hover {
+  background-color: #431185 !important;
+  border: 1px solid #ddd9e4 !important;
+  color: #ffffff;
+}

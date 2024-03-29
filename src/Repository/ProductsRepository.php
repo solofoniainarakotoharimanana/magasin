@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * @extends ServiceEntityRepository<Products>
@@ -35,6 +36,12 @@ class ProductsRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
+
+public function getAllProducts()
+{
+    //$query = $this->createQueryBuilder('p')
+    //->where('')
+}
 
 //    public function findOneBySomeField($value): ?Products
 //    {
