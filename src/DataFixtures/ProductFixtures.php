@@ -25,7 +25,10 @@ class ProductFixtures extends Fixture
             $product->setDescription($faker->text())
                 ->setPrice($faker->randomFloat($min = 1, $max = 500))
                 ->setTitle($faker->words(4, true))
-                ->setCreatedAt((new \DateTimeImmutable()));
+                ->setIsActive(mt_rand(0, 1))
+                ->setCreatedAt((new \DateTimeImmutable()))
+                ->setImage($faker->imageUrl(640, 480, 'box', true))
+                ;
 
             $manager->persist($product);
         }

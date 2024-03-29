@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Products;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Products>
@@ -16,7 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private PaginatorInterface $paginator)
     {
         parent::__construct($registry, Products::class);
     }
@@ -35,6 +37,22 @@ class ProductsRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
+
+public function getAllProductsActive(int $page): PaginationInterface
+{
+        $query = $this->createQueryBuilder('p')
+            ->where('p.isActive = true')
+            ->addOrderBy("p.id", "DESC")
+            ->getQuery()
+            ->getResult();
+        $posts = $this->paginator->paginate(
+            $query,
+            $page,
+            12
+        );
+
+        return $posts;
+}
 
 //    public function findOneBySomeField($value): ?Products
 //    {

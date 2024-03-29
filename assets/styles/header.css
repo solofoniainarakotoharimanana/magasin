@@ -1,0 +1,32 @@
+.mg-navbar {
+  background-color: rgba(0, 0, 0, 0.55);
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.55);
+}
+
+.mg-navbar .nav-link {
+  border-bottom: 2px solid transparent;
+  transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+}
+
+.mg-navbar .nav-link:hover {
+  padding-bottom: 20px !important;
+  border-bottom-color: var(--bs-teal) !important;
+}
+
+.mg-link-login {
+  color: var(--bs-teal) !important;
+  transition: 0.5s;
+  border: 2px solid var(--bs-teal) !important;
+}
+
+.mg-link-login:hover,
+.mg-link-login:active {
+  color: #fff !important;
+  background-color: var(--bs-teal) !important;
+}
+
+.mg-badge-cart {
+  left: 85px;
+  top: -1px;
+  background-color: #ec0f4c;
+}

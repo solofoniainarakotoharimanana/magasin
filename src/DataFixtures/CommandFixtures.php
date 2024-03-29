@@ -36,7 +36,8 @@ class CommandFixtures extends Fixture implements DependentFixtureInterface
             $command->setClient($user)
                 ->setCodeCmd(strval($number) . "-" . strtoupper($faker->word) ."-". date("Y"))
                 ->setDateCmd((new \DateTimeImmutable()))
-                ->setCreatedAt((new \DateTimeImmutable()));
+                ->setCreatedAt((new \DateTimeImmutable()))
+                ->setStatus(array_rand(['CREATED', 'DONE', 'REFUSED']));
             
             $manager->persist($command);
         }
