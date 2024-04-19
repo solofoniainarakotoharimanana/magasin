@@ -7,7 +7,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<ul class="navbar-nav ms-auto mb-lg-0">
 				<li class="nav-item pe-4">
-					<a class="nav-link text-white font-weight-bold " href="#">Accueil
+					<a class="nav-link text-white font-weight-bold " href="{{ path('app.home') }}">Accueil
 					</a>
 				</li>
 				<li class="nav-item pe-4">
@@ -15,12 +15,17 @@
 					</a>
 				</li>
 				<li class="nav-item pe-4 position-relative">
-					<a class="nav-link text-white font-weight-bold" href="#">Mon panier
+					<a class="nav-link text-white font-weight-bold" href="{{ path('app.cart')}}">Mon panier
 					</a>
-					<span class="badge badge-danger position-absolute mg-badge-cart">1</span>
+					{% if app.session.has('cart') and app.session.get('cart')|length > 0 %}
+						<span class="badge badge-danger position-absolute mg-badge-cart">
+							{{ app.session.get('cart')|length }}
+						</span>
+					{% endif %}
 				</li>
 				<li class="nav-item pe-4 ">
-					<a class="text-white font-weight-bold mg-link-login btn " href="#">Connexion
+					<a class="text-white font-weight-bold mg-link-login btn " href="#">
+						Connexion
 					</a>
 				</li>
 			</ul>

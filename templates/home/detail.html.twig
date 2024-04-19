@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+{% block content %}
+	<div class="mg-products-content pt-md-5 pt-sm-5">
+		<div class="row mt-5">
+			<div class="col-sm-12 col-lg-6 col-xl-6">
+				<img class="img-fluid border border-1 thumbnail" src="{{ product.image}}" alt="{{ product.title}}"/>
+			</div>
+			<div class="col-sm-12 col-lg-6 col-xl-6">
+				<div class="d-flex flex-column">
+					<h1 class="h1 text-center text-muted">{{ product.title}}</h1>
+					<div class="d-flex flex-column mt-2">
+						<span class="h4 text-dark font-weight-bold">Déscritpion:
+						</span>
+						<p class="text-muted mt-1 justify-content-center ">{{product.description}}</p>
+					</div>
+					<hr/>
+					<div class="d-flex flex-column">
+						<p class="text-muted  h5">{{ product.price}}
+							€</p>
+						<span class="h4 text-dark font-weight-bold mt-2">Quantité:
+						</span>
+						{#<form>#}
+						{{ form_start(form) }}
+						{# app/Resources/views/default/new.html.twig #}
+						{#{ form_start(form, {'action': path('app.addToCart', {slug: product.slug}), 'method': 'GET'}) }#}
+
+
+							<div class="d-none"> {{ form_widget(form.product_id,
+
+								{
+									'type': 'text', 
+									'class': 'form-control w-50',
+									'id': 'product-id',
+									'value':product.id
+							})}}
+							{{ form_widget(form.slug,
+
+								{
+									'type': 'text', 
+									'class': 'form-control w-50',
+									'id': 'product-slug',
+									'value':product.slug
+							})}}
+
+							{{ form_widget(form.product_price,
+
+									{
+										'type': 'text',
+										'class': 'form-control w-50',
+										'id': 'product-price',
+										'value':product.price
+							})}}
+						</div>
+						<div class="d-flex justify-content-between">
+							<div class="form-group">
+								{{ form_widget(form.quantity, 
+									{
+										'type': 'number', 
+										'class': 'form-control w-50',
+										'min': '1',
+										'id': 'product-quantity'
+									})}}
+								{#<input type="number" class="form-control w-50" min="1" value="1"/>#}
+							</div>
+							<div>
+								<span class="text-muted h5">Total:
+								</span>
+								<span id="product-total-price" class="text-muted h5">0</span>
+								<input id="product-id" type="text" class="d-none" value=""/>
+							</div>
+						</div>
+						<button id="btn-add-to-cart" class="btn btn-block mt-5 mg-btn-add-cart text-white w-75">Ajouter au panier</button>
+
+						{#</form>#}
+						{{ form_end(form)}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
