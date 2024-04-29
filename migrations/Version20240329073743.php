@@ -20,7 +20,7 @@ final class Version20240329073743 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE address (id INT AUTO_INCREMENT NOT NULL, client_id INT NOT NULL, lot VARCHAR(255) NOT NULL, road VARCHAR(255) DEFAULT NULL, city VARCHAR(255) NOT NULL, INDEX IDX_D4E6F8119EB6921 (client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        /*$this->addSql('CREATE TABLE address (id INT AUTO_INCREMENT NOT NULL, client_id INT NOT NULL, lot VARCHAR(255) NOT NULL, road VARCHAR(255) DEFAULT NULL, city VARCHAR(255) NOT NULL, INDEX IDX_D4E6F8119EB6921 (client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE command_detail (id INT AUTO_INCREMENT NOT NULL, command_id INT NOT NULL, product_id INT NOT NULL, quantity_cmd INT NOT NULL, total_price DOUBLE PRECISION NOT NULL, INDEX IDX_9145B6D033E1689A (command_id), INDEX IDX_9145B6D04584665A (product_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE commande (id INT AUTO_INCREMENT NOT NULL, client_id INT NOT NULL, code_cmd VARCHAR(255) NOT NULL, date_cmd DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', status VARCHAR(255) NOT NULL, INDEX IDX_6EEAA67D19EB6921 (client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE livraison (id INT AUTO_INCREMENT NOT NULL, commande_id INT NOT NULL, address_id INT NOT NULL, date_livraison DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', INDEX IDX_A60C9F1F82EA2E54 (commande_id), INDEX IDX_A60C9F1FF5B7AF75 (address_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -32,7 +32,7 @@ final class Version20240329073743 extends AbstractMigration
         $this->addSql('ALTER TABLE command_detail ADD CONSTRAINT FK_9145B6D04584665A FOREIGN KEY (product_id) REFERENCES products (id)');
         $this->addSql('ALTER TABLE commande ADD CONSTRAINT FK_6EEAA67D19EB6921 FOREIGN KEY (client_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE livraison ADD CONSTRAINT FK_A60C9F1F82EA2E54 FOREIGN KEY (commande_id) REFERENCES commande (id)');
-        $this->addSql('ALTER TABLE livraison ADD CONSTRAINT FK_A60C9F1FF5B7AF75 FOREIGN KEY (address_id) REFERENCES address (id)');
+        $this->addSql('ALTER TABLE livraison ADD CONSTRAINT FK_A60C9F1FF5B7AF75 FOREIGN KEY (address_id) REFERENCES address (id)');*/
     }
 
     public function down(Schema $schema): void

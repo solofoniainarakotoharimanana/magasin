@@ -51,4 +51,13 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('app.cart');
     }
+
+    #[Route("/delete-cart", name: "app.delete.cart")]
+    public function deletCart():Response
+    {
+        $this->cart->deleteCart();
+
+        return $this->redirectToRoute('app.cart');
+
+    }
 }

@@ -93,4 +93,10 @@ class Cart
 
     $this->requestStack->getSession()->set('cart', $cart);   
   }
+
+  public function deleteCart()
+  {
+    $cart = $this->requestStack->getSession()->remove('cart');
+
+  }
 }

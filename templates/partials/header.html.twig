@@ -1,6 +1,13 @@
 <nav class="mg-navbar navbar navbar-expand-lg  navbar-dark shadow-sm position-fixed w-100">
 	<div class="container-fluid">
-		<a class="navbar-brand text-uppercase mx-4 text-white font-weight-bold py-3" href="#">Navbar</a>
+		<div class="flex flex-column">
+			<a class="navbar-brand text-uppercase mx-4 text-white font-weight-bold py-3" href="#">Logo</a>
+			{% if app.user %}
+				{% set fullname  = app.user.firstname ~ " " ~ app.user.lastname %}
+				<p class="text-white font-weight-bold">Bienvenue
+					{{fullname}}</p>
+			{% endif %}
+		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -23,11 +30,29 @@
 						</span>
 					{% endif %}
 				</li>
-				<li class="nav-item pe-4 ">
-					<a class="text-white font-weight-bold mg-link-login btn " href="#">
-						Connexion
-					</a>
-				</li>
+				{% if app.user %}
+					<li class="nav-item pe-4 ">
+						<a class="text-white font-weight-bold mg-link-login btn " href="{{ path('app_logout')}}">
+							Se déconnecter
+						</a>
+					</li>
+
+				{% else %}
+					<li class="nav-item pe-4 ">
+						<a class="text-white font-weight-bold mg-link-login btn " href="{{ path('app.login')}}">
+							Connexion
+						</a>
+					</li>
+					<li class="nav-item pe-4 ">
+						<a class="text-white font-weight-bold mg-link-login btn " href="{{path('app.register')}}">
+							Créer un compte
+						</a>
+					</li>
+
+
+				{% endif %}
+
+
 			</ul>
 		</div>
 
