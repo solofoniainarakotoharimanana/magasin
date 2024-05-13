@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Addresses
+{% endblock %}
+
+{% block content %}
+	<div class="mg-products-content pt-md-5 pt-sm-5">
+		<div class="d-flex flex-row justify-content-between">
+			<div>
+				<h1 class="display-6 mt-5 lead">Mes adresses
+				</h1>
+				<p class="text-secondary">Bienvenue
+					{{ app.user.fullName}}<br/>
+					C'est dans cette espace que vous pouvez gerer votre adresse
+				</p>
+			</div>
+			<a href="{{path('app.account.add_address')}}" class="mt-5 btn btn-primary align-self-start">Ajouter un adresse</a>
+
+		</div>
+		<hr/>
+		{% if app.user.addresses |length == 0 %}
+			<p class="text-warning font-weight-bold text-xl lead text-center">
+				Vous  n'avez pas encore d'adresse veuillez créer. pour en créer cliquer
+				<a href="{{path('app.account.add_address')}}">ici</a>
+			</p>
+		{% else %}
+			<div class="container">
+				<div class="row">
+					{% for address in addresses %}
+						<div class="col-md-4">
+							<div class="card" style="width: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">{{address.lot}}</h5>
+									<p class="card-text">{{address.road}}</p>
+									<p class="card-text">{{address.city}}</p>
+									<a href="{{path('app.account.update_address', {id: address.id})}}">Modifier</a>
+									|
+									<a href="#">Supprimer</a>
+
+								</div>
+							</div>
+
+						</div>
+					{% endfor %}
+
+				</div>
+
+			</div>
+		{% endif %}
+
+	</div>
+
+
+{% endblock %}

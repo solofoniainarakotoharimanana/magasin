@@ -1,0 +1,47 @@
+{% include "base.html.twig" %}
+
+{% block content %}
+	<h1 class="text-xl-center text-md-center text-sm-center mg-products-content-title">Ajouter une adresse</h1>
+	<div class="container ">
+		<div class="mx-auto w-50 ">
+			{{form_start(form)}}
+			<div class="row mb-3">
+				<div class="col">
+					<div class="form-group">
+						{{ form_widget(form.lot, {'attr': {
+              'class': 'form-control form-sm',
+              'placeholder': 'Lot'
+              }})}}
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						{{ form_widget(form.road, {'attr': {
+              'class': 'form-control form-sm',
+              'placeholder': 'Rue'
+              }})}}
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-6">
+					<div class="form-group">
+						{{ form_widget(form.city, {'attr': {
+              'class': 'form-control form-sm',
+              'placeholder': 'Region'
+              }})}}
+					</div>
+				</div>
+			</div>
+			<div class="row p-4">
+				<button type="submit" class="btn btn-block btn-primary btn-sm">Sauvegarder</button>
+			</div>
+
+			{{form_end(form)}}
+
+
+		</div>
+		<div>
+
+
+		{% endblock %}

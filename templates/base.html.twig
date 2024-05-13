@@ -16,8 +16,13 @@
 		{% endblock %}
 	</head>
 	<body class="bg-light">
-		{% include "partials/header.html.twig" %}
-		<div class="container"> {% block content %}{% endblock %}
+		<header>
+			{% include "partials/header.html.twig" %}
+		</header>
+		<main role="main">
+			<div class="container"> {% block content %}{% endblock %}
+				<span></span>
 			</div>
-		</body>
-	</html>
+		</main>
+	</body>
+</html>
