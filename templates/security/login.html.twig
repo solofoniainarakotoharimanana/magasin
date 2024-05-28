@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
+{% block title %}Se connecter
 {% endblock %}
 
 {% block content %}
 
-	<div class="row mx-auto col-sm-12 col-md-6 col-lg-6">
-		<form method="post">
+	<div class="row mx-auto col-sm-12 col-md-6 col-lg-6 pt-5">
+
+		<form method="post" class="mt-5 p-5 bg-white shadow-sm rounded">
 			{% if error %}
 				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
@@ -19,12 +20,16 @@
 				</div>
 			{% endif %}
 
-			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-			<label for="inputEmail">Email</label>
-			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-			<label for="inputPassword">Password</label>
-			<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			<h1 class="h3 mb-3 font-weight-bold text-center display-6 text-primary">Se connecter</h1>
+			<div
+				class="form-group mb-4">
+				{#<label for="inputEmail" class="text-dark font-weight-lighter">Adresse email</label>#}
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control form-control-sm py-2" autocomplete="email" required autofocus placeholder="Votre adresse email">
+			</div>
 
+			<div class="form-group mb-4">
+				<input type="password" name="password" id="inputPassword" class="form-control form-control-sm py-2" autocomplete="current-password" required placeholder="Votre mot de passe">
+			</div>
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 			<div class="checkbox mb-3">
@@ -34,8 +39,8 @@
 				</label>
 			</div>
 
-			<button class="btn btn-lg btn-primary" type="submit">
-				Sign in
+			<button class="btn btn-lg btn-primary btn-sm w-100" type="submit">
+				Se connecter
 			</button>
 		</form>
 

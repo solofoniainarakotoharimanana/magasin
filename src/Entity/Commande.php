@@ -6,6 +6,7 @@ use App\Entity\Traits\Timestampable;
 use App\Repository\CommandeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
@@ -36,6 +37,15 @@ class Commande
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $carrierName = null;
+
+    #[ORM\Column]
+    private ?float $carrierPrice = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $delivery = null;
 
     public function __construct()
     {
@@ -155,4 +165,41 @@ class Commande
 
         return $this;
     }
+
+    public function getCarrierName(): ?string
+    {
+        return $this->carrierName;
+    }
+
+    public function setCarrierName(string $carrierName): static
+    {
+        $this->carrierName = $carrierName;
+
+        return $this;
+    }
+
+    public function getCarrierPrice(): ?float
+    {
+        return $this->carrierPrice;
+    }
+
+    public function setCarrierPrice(float $carrierPrice): static
+    {
+        $this->carrierPrice = $carrierPrice;
+
+        return $this;
+    }
+
+    public function getDelivery(): ?string
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(string $delivery): static
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
+
 }

@@ -60,18 +60,16 @@
 										'min': '1',
 										'id': 'product-quantity'
 									})}}
-								{#<input type="number" class="form-control w-50" min="1" value="1"/>#}
+
 							</div>
 							<div>
 								<span class="text-muted h5">Total:
 								</span>
-								<span id="product-total-price" class="text-muted h5">0</span>
+								<span id="product-total-price" class="text-muted h5"></span>
 								<input id="product-id" type="text" class="d-none" value=""/>
 							</div>
 						</div>
-						<button id="btn-add-to-cart" class="btn btn-block mt-5 mg-btn-add-cart text-white w-75">Ajouter au panier</button>
-
-						{#</form>#}
+						<button id="btn-add-to-cart" class="btn btn-block btn-sm mt-5 mg-btn-add-cart text-white w-100">Ajouter au panier</button>
 						{{ form_end(form)}}
 					</div>
 				</div>

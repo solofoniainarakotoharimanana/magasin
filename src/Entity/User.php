@@ -25,8 +25,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
-     #[Assert\Email(
+    #[Assert\Email(
         message: 'Cet email {{ value }} que vous avez entrer n\'est pas valide.',
+    )]
+    #[Assert\NotBlank(
+        message: 'Vous devez saisir un adresse email.',
     )]
     private ?string $email = null;
 
@@ -41,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     #[Assert\NotBlank(
-        message: 'Le mot de passe ne doit pas être vide )'
+        message: 'Le mot de passe ne doit pas être vide.'
     )]
     #[Assert\Length(
         min: 6, 
@@ -55,6 +58,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(
+        message: 'Vous devez saisir votre nom.'
+    )]
     private ?string $lastname = null;
 
     #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'client')]

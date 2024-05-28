@@ -45,4 +45,22 @@ class CommandeRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findByOrderByDate()
+    {
+        $date = new \DateTimeImmutable();
+        $from = new \DateTimeImmutable($date->format("Y-m-d")." 00:00:00");
+        $to   = new \DateTimeImmutable($date->format("Y-m-d")." 23:59:59");
+
+        $query = $this->createQueryBuilder('c')
+            ->andWhere('c.dateCmd BETWEEN :from AND :to')
+            ->setParameter('from', $from)
+            ->setParameter('to', $to)
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
 }

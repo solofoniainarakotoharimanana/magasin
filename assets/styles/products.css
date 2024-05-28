@@ -20,3 +20,14 @@
   border: 1px solid #ddd9e4 !important;
   color: #ffffff;
 }
+
+.form-check {
+}
+
+.check-info {
+  background: #bde5f7;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 2.5rem !important;
+  margin-top: 5px;
+}

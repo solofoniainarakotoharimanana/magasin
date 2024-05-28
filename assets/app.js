@@ -7,12 +7,11 @@
 import "./styles/app.scss";
 /*import "./styles/header.css";*/
 import Cart from "./js/cart";
-import Header from "./js/header";
 
-import * as bootstrap from "bootstrap";
+//import * as bootstrap from "bootstrap";
 
-//import "./bootstrap";
-const $ = require("jquery");
+import "./bootstrap";
+//const $ = require("jquery");
 
 document.addEventListener("DOMContentLoaded", () => {
   const inputQuantity = document.querySelector("#product-quantity");

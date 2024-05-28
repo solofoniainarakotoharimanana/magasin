@@ -2,7 +2,8 @@
 	<div class="container-fluid">
 		<div class="flex flex-column">
 			<a class="navbar-brand text-uppercase mx-4 text-white font-weight-bold py-3" href="#">Logo</a>
-			{% if app.user %}
+			{#% if app.user %#}
+			{% if is_granted('ROLE_USER') %}
 				{% set fullname  = app.user.firstname ~ " " ~ app.user.lastname %}
 				<p class="text-white font-weight-bold">Bienvenue
 					{{fullname}}</p>
@@ -30,7 +31,7 @@
 						</span>
 					{% endif %}
 				</li>
-				{% if app.user %}
+				{% if is_granted('ROLE_USER') %}
 					<li class="nav-item pe-4 ">
 						<a class="text-white font-weight-bold mg-link-login btn " href="{{ path('app_logout')}}">
 							Se déconnecter

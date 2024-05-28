@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Passez une commande" %}
+
+{% block content %}
+	<div class="mg-products-content pt-md-5 pt-sm-5">
+		<h6 class="display-6 lead mt-5">Je passe ma commande</h6>
+		<p>Choisissez vous préference avant de passer votre commande</p>
+		<hr/>
+		<div class="row">
+			<a href="{{ path('app.account.add_address')}}">Ajouter une adresse de livraison</a>
+
+			<div class="col-md-6 mb-3">
+				{% set formHtml %}
+				{{form_start(form, {action: path('app.commande.recap')})}}
+
+				{{form_end(form)}}
+
+				{% endset %}
+
+				{#{ formHtml|replace('[br]', '<br />')|raw }#}
+				{{ formHtml | replace({"[br]":"<br />"})|raw }}
+
+
+			</div>
+			<div class="col-md-6">
+				<p class="lead text-primary font-weight-bolder">Recapitulatif de ma commande</p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Image</th>
+							<th scope="col">Titre</th>
+							<th scope="col">Prix Unitaire</th>
+							<th scope="col">Quantité</th>
+							<th scope="col">Total</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% set total = 0 %}
+						{% for cart in cartDatas %}
+							<tr>
+								<td class="w-25">
+									<img class="img-fluid w-25" src="{{cart.product.image}}" alt="{{ cart.product.title}}"/>
+								</td>
+								<td class="h6 text-primary ">{{ cart.product.title}}</td>
+
+								<td class="text-muted text-center">
+									{{cart.product.price}}€
+								</td>
+								<td class="text-muted text-center">
+									{{cart.quantity}}
+								</td>
+								<td class="text-muted text-center">
+									{{cart.total}}€
+								</td>
+
+							</tr>
+							{% set total = total + cart.total %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

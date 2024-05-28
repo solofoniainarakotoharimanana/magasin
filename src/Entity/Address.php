@@ -121,4 +121,14 @@ class Address
 
         return $this;
     }
+
+    public function __toString(): String 
+    {
+        return $this->getFullName();
+    }
+
+    public function getFullName(): string
+    {
+        return $this->getLot()."[br]".$this->getRoad()."[br]".$this->getCity()."[br]";;
+    }
 }

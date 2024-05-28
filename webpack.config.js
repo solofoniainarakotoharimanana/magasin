@@ -71,4 +71,45 @@ Encore
 // uncomment if you're having problems with a jQuery plugin
 //.autoProvidejQuery()
 
-module.exports = Encore.getWebpackConfig();
+//module.exports = Encore.getWebpackConfig();
+
+const path = require("path");
+
+module.exports = {
+  entry: "./src/js/app.js",
+  output: {
+    filename: "app.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  devServer: {
+    static: path.resolve(__dirname, "dist"),
+    port: 8080,
+    hot: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(scss)$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: () => [require("autoprefixer")],
+              },
+            },
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
+      },
+    ],
+  },
+};
